@@ -1,0 +1,193 @@
+/* Font */
+@import url('https://fonts.googleapis.com/css?family=Quicksand:400,700');
+
+body{ 
+	/* background-repeat: no-repeat; */
+  	background-attachment: fixed;
+ 	  -webkit-background-size: cover;
+  	-moz-background-size: cover;
+    -o-background-size: cover;
+  background-color: rgb(0, 0, 0);
+  background-size: cover;
+  color: wheat;
+    /* color: black; */
+    font-family: Georgia, 'Times New Roman', Times, serif;
+}
+
+.jumbotron{
+  color: aliceblue;
+  color: wheat;
+}
+
+.container{
+  display: grid;
+  /* height: 100vh; */
+  padding: 1rem;
+  grid-auto-flow: row;
+  max-width: 100%;
+  grid-gap: 0.2rem;
+  text-align: center; 
+  justify-items: center;
+}
+
+h1 {
+    font-size: 3rem;
+    /* font-weight: 700; */
+    text-align: center;
+    padding: 1rem;
+}
+
+img {
+  height: auto;
+  max-width: 100%;
+  vertical-align: middle;
+  max-height: 400px;
+}
+
+.sonn{
+  background-color:	#bdbdbd;
+  border: darkslategrey;
+}
+
+
+.btn.card_btn {
+  color: wheat;
+  padding: 0.8rem;
+  font-size: 14px;
+  text-transform: uppercase;
+  border-radius: 4px;
+  font-weight: 400;
+  display: block;
+  width: 50%;
+  cursor: pointer;
+  border: 2px solid rgba(255, 255, 255, 0.2);
+  background: transparent;
+  margin: auto;
+}
+
+.btn:hover {
+  opacity: 0.8;
+}
+
+.cards {
+  display: flex;
+  flex-wrap: wrap;
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  justify-content: center;
+}
+
+.cards_item {
+  display: flex;
+  padding: 1rem;
+}
+
+/* @media (min-width: 40rem) {
+  .cards_item {
+    width: 50%;
+  }
+}
+
+@media (min-width: 56rem) {
+  .cards_item {
+    width: 25%;
+  }
+} */
+
+.card {
+  border-radius: 0.25rem;
+  /* box-shadow: 0 20px 40px -14px rgba(0, 0, 0, 0.25); */
+  display: flex;
+  flex-direction: column;
+  overflow: hidden;
+  max-height: 16rem;
+  max-width: 13rem;
+}
+
+ .card_content {
+   background: linear-gradient(to bottom, #2c2c2c 40%, #8b8b8b 100%);
+} 
+
+.card_title {
+  color: #ffffff;
+  font-size: 1.1rem;
+  font-weight: 700; 
+  letter-spacing: 1px;
+  text-transform: capitalize;
+  margin: 1rem;
+  text-align: center;
+}
+
+/* .card_text {
+  color: #ffffff;
+  font-size: 0.875rem;
+  line-height: 1.5;
+  margin-bottom: 1.25rem;    
+  font-weight: 400;
+} */
+
+.footer{
+  font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+  width: 100%;
+  text-align: center;
+  background: black;
+  width: 100%;
+  padding: 1rem;
+}
+
+.octocat.icons{
+  width: 3rem;
+  height: 3rem;
+  /* align-items: center;
+  justify-content: center; */
+}
+
+@media only screen and (max-width: 500px) {
+  /* 
+  Backgorund image
+  Text box - sonnent
+  Footer */
+
+  #header {
+    /* background: url("images/typewriter.jpg"); */
+    background-repeat: no-repeat;
+    background-position-y: center;
+    background-size: cover;
+  }
+
+
+  
+  .display-2 {
+      font-size: 3rem;
+      font-weight: 300;
+      line-height: 1.2;
+  }
+
+  /* h1 {
+    font-size: 3rem;
+    font-weight: 700;
+    text-align: center;
+    padding: 1rem;
+  } */
+
+  .container{
+    max-width: 90%;
+    display: grid;
+    /* height: 100vh; */
+    padding: 1rem;
+    grid-auto-flow: row;
+    max-width: 100%;
+    grid-gap: 0.2rem;
+    text-align: center; 
+    justify-items: center;
+  }
+  
+
+  .sonn{
+    max-width: 90vw;
+  }
+
+}
+
+
