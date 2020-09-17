@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Enter parameters</title>
+</head>
+<body>
+
+    {% if text %}
+        <pre> 
+            {{ text }} 
+        </pre> 
+    {% endif %}
+
+    <form action="" method="post">
+        <p>
+            <label for="prefix">Prefix</label>
+            <input type="text" name="prefix">
+        </p>
+        <p>
+            <label for="temperature">Temperature</label>
+            <input type="number" step="0.01" min="0" name="temperature">
+        </p>
+        <p>
+            <input type="submit" name="generate">
+        </p>
+    </form>
+
+</body>
+</html>
