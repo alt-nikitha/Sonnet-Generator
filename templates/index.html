@@ -36,11 +36,7 @@
         <p class="lead"><em>Sonnet's get started</em></p>
         <a href="https://www.britannica.com/art/sonnet" class="btn card_btn" style="width: 10rem;">What's a Sonnet?</a>
     </section>
-    {% if text %}
-        <pre> 
-            {{ text }} 
-        </pre> 
-    {% endif %}
+    
  <!-- Parameter input and control buttons within container div -->
     <div class="container">
         <form action="/index" method="POST">
@@ -60,12 +56,13 @@
     <!-- Displaying Sonnet in another div -->
         <div>
             <textarea class="form-control sonn" rows="16" style="width: 30rem;">
-                Sonnet to be displayed
+                Sonnet Generated :
                 {% if text %}
-                <pre> 
+                
                     {{ text }} 
-                </pre> 
+                
                 {% endif %}
+                
             </textarea>
         </div>
     </div>
