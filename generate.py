@@ -4,23 +4,12 @@ import numpy as np
 import os
 import time
 
-def build_model(vocab_size, embedding_dim, rnn_units, batch_size):
-  model = tf.keras.Sequential([
-    tf.keras.layers.Embedding(vocab_size, embedding_dim,
-                              batch_input_shape=[batch_size, None]),
-    tf.keras.layers.GRU(rnn_units,
-                        return_sequences=True,
-                        stateful=True,
-                        recurrent_initializer='glorot_uniform'),
-    tf.keras.layers.Dense(vocab_size)
-  ])
-  return model
 
-def generate_text(model, start_string):
+def generate_text(model,start_string,temperature,char2idx,idx2char):
   # Evaluation step (generating text using the learned model)
 
   # Number of characters to generate
-  num_generate = 1000
+  num_generate = 500
 
   # Converting our start string to numbers (vectorizing)
   input_eval = [char2idx[s] for s in start_string]
@@ -32,7 +21,7 @@ def generate_text(model, start_string):
   # Low temperatures results in more predictable text.
   # Higher temperatures results in more surprising text.
   # Experiment to find the best setting.
-  temperature = 1.0
+  temperature = temperature
 
   # Here batch size == 1
   model.reset_states()
@@ -53,23 +42,17 @@ def generate_text(model, start_string):
 
   return (start_string + ''.join(text_generated))
 
-# Length of the vocabulary in chars
-vocab_size = len(vocab)
+  
+  
 
-# The embedding dimension
-embedding_dim = 256
+  # checkpoint_file = './training_checkpoints/ckpt_10'
 
-# Number of RNN units
-rnn_units = 1024
+  # model = build_model(vocab_size, embedding_dim, rnn_units, batch_size=1)
 
-checkpoint_dir = '/training_checkpoints'
+  # model.load_weights(checkpoint_file)
 
-model = build_model(vocab_size, embedding_dim, rnn_units, batch_size=1)
+  # model.build(tf.TensorShape([1, None]))
 
-model.load_weights(tf.train.latest_checkpoint(checkpoint_dir))
+  # model.summary()
 
-model.build(tf.TensorShape([1, None]))
-
-model.summary()
-
-print(generate_text(model, start_string=u"people: "))
+  # return(generate_text(model, start_string=prefix))
