@@ -36,15 +36,15 @@ model = build_model(vocab_size, embedding_dim, rnn_units, batch_size=1)
 
 model.load_weights(checkpoint_file)
 
-app = Flask(__name__) 
+app = Flask(__name__,static_url_path='/static') 
 
 
 @app.route('/index',methods=['post', 'get'])
 def index():
     if request.method == 'POST':
         prefix = request.form.get('prefix')
-        temperature = float(request.form.get('temperature'))
-        
+        # temperature = float(request.form.get('temperature'))
+        temperature=0.5
         return render_template('index.html',text=gen.generate_text(model,prefix,temperature,char2idx,idx2char))
     else:
         return render_template('index.html',text="Enter something pls")
