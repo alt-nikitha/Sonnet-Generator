@@ -39,7 +39,7 @@ model.load_weights(checkpoint_file)
 app = Flask(__name__,static_url_path='/static') 
 
 
-@app.route('/index',methods=['post', 'get'])
+@app.route('/',methods=['post', 'get'])
 def index():
     if request.method == 'POST':
         prefix = request.form.get('prefix')
@@ -52,11 +52,11 @@ def index():
     else:
         return render_template('index.html',text="")
 
-@app.route('/')
+# @app.route('/')
 def rootfile():
     return "hello"
 if __name__ == "__main__":
     
-    app.run(debug=False)
+    app.run(debug=True)
 
 
