@@ -46,16 +46,18 @@ Now, we can test the flask application we've built that takes the model we've tr
 
 ` !python app.py `
     
+### Deploying
 
-    
+First, install ngrok library by running
+ !pip install flask-ngrok
+ngrok is a lightweight tool used to generate public URLs for testing your model.
 
-
-
-
-
-
-
-
-
-
+Second, make sure in your app.py file, the function app.run(), should not have any debug value.
+Third, in your app.py file, import this:-
+from flask_ngrok import run_with_ngrok
+Fourth, in your app.py file, 
+type in this command:- run_with_ngrok(app), right below this 
+app = Flask(__name__,static_url_path='/static') (Save all these changes in app.py)
+Finally, run app.py
+!python app.py
 
