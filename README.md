@@ -10,7 +10,7 @@ The model is character-based and does not learn the meaning or context of words.
 
 To train the model from scratch, a system with a GPU is required. It is recommended that the files be run on a service that provides GPU support such as Google Colab. To train the model on colab, use the following steps:
 
-    ` !git clone https://github.com/alt-nikitha/Sonnet-Generator.git ` 
+` !git clone https://github.com/alt-nikitha/Sonnet-Generator.git ` 
 
     ` cd Sonnet-Generator ` 
 
