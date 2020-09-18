@@ -14,6 +14,10 @@ body{
     font-family: Georgia, 'Times New Roman', Times, serif;
 }
 
+h3{
+  font-size: 1.5rem;
+}
+
 .jumbotron{
   color: aliceblue;
   color: wheat;
@@ -31,7 +35,7 @@ body{
 }
 
 h1 {
-    font-size: 3rem;
+    font-size: 2.5rem;
     /* font-weight: 700; */
     text-align: center;
     padding: 1rem;

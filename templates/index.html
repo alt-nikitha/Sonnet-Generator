@@ -11,15 +11,15 @@
         crossorigin="anonymous">
 
     <!-- External CSS + Title favicon + Fonts -->
-    <link rel="stylesheet" type= "text/css" href="static/CSS/style.css" />
-    <link rel="icon" type="image/png" href="/static/images/writer.png" sizes="10x10">
+    <link rel="stylesheet" type= "text/css" href="../static/CSS/style.css" />
+    <link rel="icon" type="image/png" href="../static/images/writer.png" sizes="10x10">
     <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.4.1/css/all.css" integrity="sha384-5sAR7xN1Nv6T6+dT2mhtzEpVJvfS3NScPQTrOxhwjIuvcA67KV2R5Jz6kr4abQsz"
         crossorigin="anonymous">
 
     <!-- Styling for the background -->
     <style>
         #header {
-             background: url("static/images/typewriter.jpg");
+             background: url("../static/images/typewriter.jpg");
              background-repeat: no-repeat;
              background-position-y: center;
             background-size: cover;
@@ -33,7 +33,7 @@
  <!-- Heading for Sonnet Generator -->
     <section id="header" class="jumbotron text-center">
         <h1 class="display-2">Sonnet Generator </h1>
-        <p class="lead"><em>Sonnet's get started</em></p>
+        <p><h3><em>Sonnet's get started</em></h3></p>
         <a href="https://www.britannica.com/art/sonnet" class="btn card_btn" style="width: 10rem;">What's a Sonnet?</a>
     </section>
     
@@ -54,15 +54,18 @@
             
         <br/>
     <!-- Displaying Sonnet in another div -->
-        <div>
-            <textarea class="form-control sonn" rows="16" style="width: 30rem;">
-                Sonnet Generated :
-                {% if text %}
+
+        <!-- {% if text %}
                 
                     {{ text }} 
                 
                 {% endif %}
-                
+                 -->
+
+        <div>
+            <p><h3><em> Generated Sonnet </em></h3></p>
+            <textarea class="form-control sonn" rows="16" style="width: 30rem;">
+              
             </textarea>
         </div>
     </div>
@@ -76,7 +79,7 @@
         <ul class="cards">
             <li class="cards_item">
                 <div class="card bg-dark mb-3">
-                    <div class="card-img-top rounded-circle"><img src="static/images/niki.jpg"></div>
+                    <div class="card-img-top"><img src="../static/images/niki.jpg"></div>
                     <div class="card_content">
                         <h2 class="card_title">Nikitha Srikanth</h2>
                     </div>
@@ -85,7 +88,7 @@
             <li class="cards_item">
                 <div class="card bg-dark mb-3">
                 <div class="card_image">
-                    <img src="static/images/risha.jpg"></div>
+                    <img src="../static/images/risha.jpg"></div>
                 <div class="card_content">
                     <h2 class="card_title">Risha Dassi</h2>        
                 </div>
@@ -93,14 +96,14 @@
             </li>
             <li class="cards_item">
                 <div class="card bg-dark mb-3">
-                <div class="card_image"><img src="static/images/sai.jpg"></div>
+                <div class="card_image"><img src="../static/images/sai.jpg"></div>
                 <div class="card_content">
                     <h2 class="card_title">Sai Keerthana</h2>
                 </div>
             </li>
             <li class="cards_item">
                 <div class="card bg-dark mb-3">
-                <div class="card_image"><img src="static/images/sakshi.jpeg"></div>
+                <div class="card_image"><img src="../static/images/sakshi.jpeg"></div>
                 <div class="card_content">
                     <h2 class="card_title">Sakshi Kamal</h2>
                 </div>
@@ -113,7 +116,7 @@
     <footer class="footer">Checkout the Git repo at 
             <div class="image">
                         <a href="https://github.com/alt-nikitha/Sonnet-Generator" target="_blank">
-                            <img class="octocat icons" src="/static/images/Octocat_white.png" alt="Octocat-Github" >
+                            <img class="octocat icons" src="../static/images/Octocat_white.png" alt="Octocat-Github" >
                         </a> 
             </div>
     </footer>  
