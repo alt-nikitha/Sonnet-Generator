@@ -1,12 +1,12 @@
-#Sonnet-Generator
+# Sonnet-Generator
 
 The sonnet is a type of poem that has been a part of the literary repertoire since the thirteenth century. 
 Sonnets can communicate a sundry of details contained within a single thought, mood, or feeling, typically culminating in the last lines. 
 
-##Model 
+## Model 
 The model is character-based and does not learn the meaning or context of words. A sonnet like any poem is abstract and does not have clearly understandable meaning. For this reason, it is sufficient for the model to learn the sequences of characters alone. With a sequence of 100 characters, it is able to predict a much longer sequence of text with a proper structure. The model uses hidden Long Short Term Memory (LSTM) layers to remember relevant patterns in previous sequences and predict the next sequence. 
 
-###Training
+### Training
 
 To train the model from scratch, a system with a GPU is required. It is recommended that the files be run on a service that provides GPU support such as Google Colab. To train the model on colab, use the following steps:
 
@@ -36,7 +36,7 @@ Next copy the folder to your drive:
     `!cp -r /content/training_checkpoints /content/gdrive/My\ Drive`
     `cd Sonnet-Generator` 
 
-###Testing
+### Testing
 
 Now, we can test the flask application we've built that takes the model we've trained, and generates sonnets when a starting phrase is given to it.
 
