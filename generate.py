@@ -6,21 +6,21 @@ import time
 
 
 def generate_text(model,start_string,temperature,char2idx,idx2char):
-  # Evaluation step (generating text using the learned model)
+  # To generate text using the loaded model
 
   # Number of characters to generate
   num_generate = 500
 
-  # Converting our start string to numbers (vectorizing)
+  # Convert the start string to a vector of numbers
   input_eval = [char2idx[s] for s in start_string]
   input_eval = tf.expand_dims(input_eval, 0)
 
-  # Empty string to store our results
+  # To store the results
   text_generated = []
 
   # Low temperatures results in more predictable text.
-  # Higher temperatures results in more surprising text.
-  # Experiment to find the best setting.
+  # Higher temperatures results in more surprising text. 
+  
   temperature = temperature
 
   # Here batch size == 1
@@ -34,7 +34,7 @@ def generate_text(model,start_string,temperature,char2idx,idx2char):
     predictions = predictions / temperature
     predicted_id = tf.random.categorical(predictions, num_samples=1)[-1,0].numpy()
 
-    # We pass the predicted character as the next input to the model
+    # The predicted character is passed as the next input to the model
     # along with the previous hidden state
     input_eval = tf.expand_dims([predicted_id], 0)
 
