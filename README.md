@@ -35,7 +35,9 @@ drive.mount('content/gdrive')
 Next copy the folder to your drive:
 
 ` cd .. `
+
 ` !cp -r /content/training_checkpoints /content/gdrive/My\ Drive `
+
 ` cd Sonnet-Generator ` 
 
 ### Testing
