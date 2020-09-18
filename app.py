@@ -47,7 +47,7 @@ def index():
         temperature=0.5
         return render_template('index.html',text=gen.generate_text(model,prefix,temperature,char2idx,idx2char))
     else:
-        return render_template('index.html',text="Enter something pls")
+        return render_template('index.html',text="")
 
 
 if __name__ == "__main__":
