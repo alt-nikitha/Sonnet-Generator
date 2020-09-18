@@ -10,37 +10,37 @@ The model is character-based and does not learn the meaning or context of words.
 
 To train the model from scratch, a system with a GPU is required. It is recommended that the files be run on a service that provides GPU support such as Google Colab. To train the model on colab, use the following steps:
 
-    `!git clone https://github.com/alt-nikitha/Sonnet-Generator.git` <br>
+    ` !git clone https://github.com/alt-nikitha/Sonnet-Generator.git ` 
 
-    `cd Sonnet-Generator` <br>
+    ` cd Sonnet-Generator ` 
 
-    `!pip install -r requirements.txt` <br>
+    ` !pip install -r requirements.txt ` 
 
-    `!python pre.py dataset.txt dataset2.txt` <br>
+    ` !python pre.py dataset.txt dataset2.txt ` 
 
-    `!python train.py` <br>
+    ` !python train.py ` 
 
 The trained models will get stored in the training_checkpoints folder. At this point, you can zip this folder and download it for future use as follows:
 
 
-    `!zip -r  training_checkpoints.zip  /training_checkpoints/`
+    ` !zip -r  training_checkpoints.zip  /training_checkpoints/ `
 
 You can also save it to google drive. Mount your google drive:
     
-    `from google.colab import drive
-    drive.mount('content/gdrive')`
+    ` from google.colab import drive
+      drive.mount('content/gdrive') `
 
 Next copy the folder to your drive:
 
-    `cd ..`
-    `!cp -r /content/training_checkpoints /content/gdrive/My\ Drive`
-    `cd Sonnet-Generator` 
+    ` cd .. `
+    ` !cp -r /content/training_checkpoints /content/gdrive/My\ Drive `
+    ` cd Sonnet-Generator ` 
 
 ### Testing
 
 Now, we can test the flask application we've built that takes the model we've trained, and generates sonnets when a starting phrase is given to it.
 
-    `!python app.py`
+    ` !python app.py `
     
 
     
