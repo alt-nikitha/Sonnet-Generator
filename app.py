@@ -29,9 +29,9 @@ vocab_size = len(vocab)
 embedding_dim = 256
 
 # Number of RNN units
-rnn_units = 1024
+rnn_units = 256
 
-checkpoint_file = './training_checkpoints/ckpt_10'
+checkpoint_file = './training_checkpoints/ckpt_14'
 model = build_model(vocab_size, embedding_dim, rnn_units, batch_size=1)
 
 model.load_weights(checkpoint_file)
