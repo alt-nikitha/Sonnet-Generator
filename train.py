@@ -20,14 +20,14 @@ def split_input_target(chunk):
 
 def build_model(vocab_size, embedding_dim, rnn_units, batch_size):
   '''
-  define an embedding layer which is the input to the model. The number that
+  Define an embedding layer which is the input to the model. The number that
   is mapped to each character is further mapped to a vector representation with
   embedding_dim dimensions. This layer is trainable
 
-  next define an LSTM layer in which each unit is responsible for taking 
-  characters sequentially,predicting the next character based on stored 
-  relevant information, and passes the predicted character to the subsequent unit
-  the returned sequence is passed through a dense layer to returns an output of
+  Next, define a GRU layer in which each unit is responsible for taking 
+  characters sequentially, predicting the next character based on stored 
+  relevant information from previous units, and passes the predicted character to the subsequent unit.
+  The returned sequence is passed through a dense layer to returns an output of
   vocab size, with probability for each char in the vocabulary
   '''
   model = tf.keras.Sequential([
