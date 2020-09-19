@@ -114,9 +114,6 @@ dataset = sequences.map(split_input_target)
 BATCH_SIZE = 64
 
 # Buffer size to shuffle the dataset
-# (TF data is designed to work with possibly infinite sequences,
-# so it doesn't attempt to shuffle the entire sequence in memory. Instead,
-# it maintains a buffer in which it shuffles elements).
 BUFFER_SIZE = 10000
 
 dataset = dataset.shuffle(BUFFER_SIZE).batch(BATCH_SIZE, drop_remainder=True)
@@ -141,9 +138,6 @@ model = build_model(
 
 model.summary()
 
-# define optimizer and loss function for model
-model.compile(optimizer='adam', loss=loss)
-
 # Directory where the checkpoints will be saved
 checkpoint_dir = './training_checkpoints'
 # Name of the checkpoint files
@@ -154,19 +148,8 @@ checkpoint_callback=tf.keras.callbacks.ModelCheckpoint(
     filepath=checkpoint_prefix,
     save_weights_only=True)
 
-EPOCHS=10
 
-history = model.fit(dataset, epochs=EPOCHS, callbacks=[checkpoint_callback])
-
-## advanced customised training
-
-
-model = build_model(
-    vocab_size = len(vocab),
-    embedding_dim=embedding_dim,
-    rnn_units=rnn_units,
-    batch_size=BATCH_SIZE)
-
+# define optimizer
 optimizer = tf.keras.optimizers.Adam()
 
 # Training step
@@ -179,7 +162,7 @@ for epoch in range(EPOCHS):
   model.reset_states()
 
   for (batch_n, (inp, target)) in enumerate(dataset):
-    loss = train_step(inp, target)
+    loss = train_step(inp, target, optimizer)
 
     if batch_n % 100 == 0:
       template = 'Epoch {} Batch {} Loss {}'
