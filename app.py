@@ -67,6 +67,6 @@ def rootfile():
     
 if __name__ == "__main__":
     #run the app, set debug=True during testing
-    app.run(debug=True)
+    app.run(debug=False)
 
 
