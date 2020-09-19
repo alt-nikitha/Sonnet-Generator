@@ -37,17 +37,28 @@ def build_model(vocab_size, embedding_dim, rnn_units, batch_size):
                         return_sequences=True,
                         stateful=True,
                         recurrent_initializer='glorot_uniform'),
+    tf.keras.layers.Dropout(0.2),
     tf.keras.layers.Dense(vocab_size)
   ])
   return model
 
+def train_step(inp, target,optimizer):
+  '''
+  To calculate predictions and loss.
+  Then the gradients of the loss with respect to model variables are calculated.
+  Next use optimiser to apply gradients.
+  '''
+  with tf.GradientTape() as tape:
+    predictions = model(inp)
+    loss = tf.reduce_mean(
+        tf.keras.losses.sparse_categorical_crossentropy(
+            target, predictions, from_logits=True))
+  grads = tape.gradient(loss, model.trainable_variables)
+  optimizer.apply_gradients(zip(grads, model.trainable_variables))
 
-def loss(labels, logits):
-  '''
-  loss is calculated by using categorical cross entropy, as there are probabilities
-  for different categories
-  '''
-  return tf.keras.losses.sparse_categorical_crossentropy(labels, logits, from_logits=True)
+  return loss
+
+
 
 
 #raw dataset
@@ -74,7 +85,7 @@ text_as_int = np.array([char2idx[c] for c in text])
 
 
 # The maximum length sentence we want for a single input in characters
-seq_length = 100
+seq_length = 50
 examples_per_epoch = len(text)//(seq_length+1)
 
 # Create training examples / targets
@@ -100,7 +111,7 @@ dataset = sequences.map(split_input_target)
 
 
 # Batch size
-BATCH_SIZE = 128
+BATCH_SIZE = 64
 
 # Buffer size to shuffle the dataset
 # (TF data is designed to work with possibly infinite sequences,
@@ -119,7 +130,7 @@ vocab_size = len(vocab)
 embedding_dim = 256
 
 # Number of RNN units
-rnn_units = 256
+rnn_units = 1024
 
 #instantiate a model with the architecture defined
 model = build_model(
@@ -174,8 +185,8 @@ for epoch in range(EPOCHS):
       template = 'Epoch {} Batch {} Loss {}'
       print(template.format(epoch+1, batch_n, loss))
 
-  # saving (checkpoint) the model every 5 epochs
-  if (epoch + 1) % 5 == 0:
+  # saving (checkpoint) the model for every epoch
+  
     model.save_weights(checkpoint_prefix.format(epoch=epoch))
 
   print ('Epoch {} Loss {:.4f}'.format(epoch+1, loss))
