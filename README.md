@@ -22,7 +22,7 @@ To train the model from scratch, a system with a GPU is required. It is recommen
 
 ` !python train.py ` 
 
-Even with a gpu, training can take quite a while, so wait until that's done.
+Even with a gpu, training can take quite some time, so wait until that's done.
 The trained models will get stored in the training_checkpoints folder. At this point, you can zip this folder and download it for future use as follows:
 
 
@@ -119,8 +119,6 @@ We chose sonnet-generator. After the app is created, push all the files in your 
 ` git add . `
 
 ` git commit -m "commit message" `
-
-` git push heroku `
 
 ` git push heroku master `
 
