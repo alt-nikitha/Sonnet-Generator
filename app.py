@@ -45,7 +45,6 @@ def index():
         prefix = request.form.get('prefix')
         # temperature = float(request.form.get('temperature'))
         temperature=0.5
-        # initial=gen.generate_text(model,prefix,temperature,char2idx,idx2char)
         
         
         return render_template('index.html',text=gen.generate_text(model,prefix,temperature,char2idx,idx2char))
