@@ -131,6 +131,18 @@ Finally, make sure atleast one instance of the app is running : <br>
 Now you can either directly use the URL, or open the app through your command-line by typing ` heroku open `
 
 
+References :
+
+The model architecture was based on the framework provided in these links. Specific parameters were altered to adjust for sonnets and also the layers in the models were changed for this specific purpose.  
+
+https://www.analyticsvidhya.com/blog/2018/03/text-generation-using-python-nlp/
+
+https://www.tensorflow.org/tutorials/text/text_generation
+
+http://karpathy.github.io/2015/05/21/rnn-effectiveness/
+
+
+
 
 
 
