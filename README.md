@@ -14,7 +14,7 @@ The model is character-based and does not learn the meaning or context of words.
 -GitHub
 -Heroku
 -Tensor Flow
-Additionally, all the installation packages are present in the requirements.txt file
+ ## Additionally, all the installation packages are present in the requirements.txt file
 
 
 
