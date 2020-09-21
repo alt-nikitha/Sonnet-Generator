@@ -6,6 +6,19 @@ Sonnets can communicate a sundry of details contained within a single thought, m
 ## Model 
 The model is character-based and does not learn the meaning or context of words. A sonnet like any poem is abstract and does not have clearly understandable meaning. For this reason, it is sufficient for the model to learn the sequences of characters alone. With a sequence of 100 characters, it is able to predict a much longer sequence of text with a proper structure. The model uses a special type of Recurrent Neural Network (RNN) called a Long Short Term Memory (LSTM) Netowrk to remember relevant patterns in previous sequences, forget unnecessary details, and predict the next sequence. 
 
+## Environment/Tools Used
+
+-Bootstrap 4
+-Flask
+-Google Colab
+-GitHub
+-Heroku
+-Tensor Flow
+Additionally, all the installation packages are present in the requirements.txt file
+
+
+
+
 ### Training
 
 To train the model from scratch, a system with a GPU is required. It is recommended that the files be run on a service that provides GPU support such as Google Colab. To train the model on colab, use the following steps:
