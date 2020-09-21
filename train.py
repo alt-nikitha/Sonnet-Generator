@@ -24,10 +24,13 @@ def build_model(vocab_size, embedding_dim, rnn_units, batch_size):
   is mapped to each character is further mapped to a vector representation with
   embedding_dim dimensions. This layer is trainable
 
-  Next, define a GRU layer in which each unit is responsible for taking 
+  Next, define 3 LSTM layers in which each unit is responsible for taking 
   characters sequentially, predicting the next character based on stored 
-  relevant information from previous units, and passes the predicted character to the subsequent unit.
-  The returned sequence is passed through a dense layer to returns an output of
+  relevant information from previous units and discarding things it should forget,
+  and passes the predicted character to the subsequent unit.
+  Drop out layers are added in between to drop inputs at a rate of 0.2 
+  to prevent overfitting.
+  The returned sequence is passed through a dense layer to return an output of
   vocab size, with probability for each char in the vocabulary
   '''
   model = tf.keras.Sequential([
