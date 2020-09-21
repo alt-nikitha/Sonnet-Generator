@@ -9,10 +9,21 @@ def build_model(vocab_size, embedding_dim, rnn_units, batch_size):
   model = tf.keras.Sequential([
     tf.keras.layers.Embedding(vocab_size, embedding_dim,
                               batch_input_shape=[batch_size, None]),
-    tf.keras.layers.GRU(rnn_units,
+    tf.keras.layers.LSTM(rnn_units,
                         return_sequences=True,
                         stateful=True,
                         recurrent_initializer='glorot_uniform'),
+    tf.keras.layers.Dropout(0.2),
+    tf.keras.layers.LSTM(rnn_units,
+                        return_sequences=True,
+                        stateful=True,
+                        recurrent_initializer='glorot_uniform'),
+    tf.keras.layers.Dropout(0.2),
+    tf.keras.layers.LSTM(rnn_units,
+                        return_sequences=True,
+                        stateful=True,
+                        recurrent_initializer='glorot_uniform'),
+    tf.keras.layers.Dropout(0.2),
     tf.keras.layers.Dense(vocab_size)
   ])
   return model
@@ -34,9 +45,9 @@ vocab_size = len(vocab)
 embedding_dim = 256
 
 # Number of RNN units
-rnn_units = 1024
+rnn_units = 700
 #file for pretrained model
-checkpoint_file = './training_checkpoints/ckpt_9'
+checkpoint_file = './training_checkpoints/ckpt_36'
 
 #create the skeleton for the model
 model = build_model(vocab_size, embedding_dim, rnn_units, batch_size=1)
@@ -55,7 +66,7 @@ def index():
     #get the prefix
     prefix = request.form.get('prefix')
     #render the index.html page with the sonnet after it is generated
-    return render_template('index.html',text=gen.generate_text(model,prefix.lower(),0.5,char2idx,idx2char))
+    return render_template('index.html',text=gen.generate_text(model,prefix.lower(),0.2,char2idx,idx2char))
   else:
     #if no input is given 
     return render_template('index.html',text="")
@@ -67,6 +78,6 @@ def rootfile():
     
 if __name__ == "__main__":
     #run the app, set debug=True during testing
-    app.run(debug=False)
+    app.run(debug=True)
 
 
