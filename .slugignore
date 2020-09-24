@@ -1,7 +1,7 @@
 train.py
 pre.py
 *.md
-ENV
+/ENV
 preprocess.txt
 dataset.txt
 dataset2.txt
