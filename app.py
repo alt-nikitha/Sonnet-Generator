@@ -1,8 +1,10 @@
-from flask import Flask, render_template, request 
+from flask import Flask, render_template, request, flash, redirect, url_for
+from werkzeug.utils import secure_filename
 import tensorflow as tf 
 import numpy as np 
 import os  
 import generate as gen
+import generate_caption as g1
 
 #to define model architecture so weights can be loaded accordingly
 def build_model(vocab_size, embedding_dim, rnn_units, batch_size):
@@ -54,19 +56,41 @@ model = build_model(vocab_size, embedding_dim, rnn_units, batch_size=1)
 
 #store weights
 model.load_weights(checkpoint_file)
-
+UPLOAD_FOLDER='./stored_images'
+ALLOWED_EXTENSIONS = {'txt', 'pdf', 'png', 'jpg', 'jpeg', 'gif'}
 #create an instance of the flask app
 app = Flask(__name__,static_url_path='/static') 
+app.config['SECRET_KEY'] = '\x13\xa6U\x97\xe0t\x8e\xf0\x0f\xab[\xb4'    
 
+# app.config['MAX_CONTENT_LENGTH'] = 1024 * 1024
+# app.config['UPLOAD_EXTENSIONS']=['png', 'jpg', 'jpeg']
+app.config['UPLOAD_FOLDER'] = UPLOAD_FOLDER
+def allowed_file(filename):
+  return '.' in filename and \
+          filename.rsplit('.', 1)[1].lower() in ALLOWED_EXTENSIONS
 #what happens in the index.html page
 @app.route('/index',methods=['post', 'get'])
 def index():
   #if input in the form by post method
   if request.method == 'POST':
-    #get the prefix
-    prefix = request.form.get('prefix')
-    #render the index.html page with the sonnet after it is generated
-    return render_template('index.html',text=gen.generate_text(model,prefix.lower(),0.2,char2idx,idx2char))
+    # check if the post request has the file part
+    if 'file' not in request.files:
+        flash('No file part')
+        return redirect(request.url)
+    file1 = request.files['file']
+    # if user does not select file, browser also
+    # submit an empty part without filename
+    if file1.filename == '':
+        flash('No selected file')
+        return redirect(request.url)
+    if file1 and allowed_file(file1.filename):
+        filename = secure_filename(file1.filename)
+        path=os.path.join(app.config['UPLOAD_FOLDER'], filename)
+        print(path)
+        file1.save(path)
+        caption=g1.caps(path)
+    # return render_template('index.html',text=path)
+    return render_template('index.html',text=gen.generate_text(model,caption.lower(),0.2,char2idx,idx2char))
   else:
     #if no input is given 
     return render_template('index.html',text="")
@@ -78,6 +102,6 @@ def rootfile():
     
 if __name__ == "__main__":
     #run the app, set debug=True during testing
-    app.run(debug=False)
+    app.run(debug=True)
 
 
