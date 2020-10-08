@@ -24,16 +24,29 @@ def build_model(vocab_size, embedding_dim, rnn_units, batch_size):
   is mapped to each character is further mapped to a vector representation with
   embedding_dim dimensions. This layer is trainable
 
-  Next, define a GRU layer in which each unit is responsible for taking 
+  Next, define 3 LSTM layers in which each unit is responsible for taking 
   characters sequentially, predicting the next character based on stored 
-  relevant information from previous units, and passes the predicted character to the subsequent unit.
-  The returned sequence is passed through a dense layer to returns an output of
+  relevant information from previous units and discarding things it should forget,
+  and passes the predicted character to the subsequent unit.
+  Drop out layers are added in between to drop inputs at a rate of 0.2 
+  to prevent overfitting.
+  The returned sequence is passed through a dense layer to return an output of
   vocab size, with probability for each char in the vocabulary
   '''
   model = tf.keras.Sequential([
     tf.keras.layers.Embedding(vocab_size, embedding_dim,
                               batch_input_shape=[batch_size, None]),
-    tf.keras.layers.GRU(rnn_units,
+    tf.keras.layers.LSTM(rnn_units,
+                        return_sequences=True,
+                        stateful=True,
+                        recurrent_initializer='glorot_uniform'),
+    tf.keras.layers.Dropout(0.2),
+    tf.keras.layers.LSTM(rnn_units,
+                        return_sequences=True,
+                        stateful=True,
+                        recurrent_initializer='glorot_uniform'),
+    tf.keras.layers.Dropout(0.2),
+    tf.keras.layers.LSTM(rnn_units,
                         return_sequences=True,
                         stateful=True,
                         recurrent_initializer='glorot_uniform'),
@@ -85,7 +98,7 @@ text_as_int = np.array([char2idx[c] for c in text])
 
 
 # The maximum length sentence we want for a single input in characters
-seq_length = 50
+seq_length = 100
 examples_per_epoch = len(text)//(seq_length+1)
 
 # Create training examples / targets
@@ -95,23 +108,11 @@ char_dataset = tf.data.Dataset.from_tensor_slices(text_as_int)
 input and target text'''
 sequences = char_dataset.batch(seq_length+1, drop_remainder=True) 
 
-# for item in sequences.take(5):
-#   print(repr(''.join(idx2char[item.numpy()])))
-
-
 #creates input and target texts using function defined
-
 dataset = sequences.map(split_input_target) 
 
-# #look at one example of input and target
-# for input_example, target_example in  dataset.take(1):
-#   print ('Input data: ', repr(''.join(idx2char[input_example.numpy()])))
-#   print ('Target data:', repr(''.join(idx2char[target_example.numpy()])))
-
-
-
 # Batch size
-BATCH_SIZE = 64
+BATCH_SIZE = 100
 
 # Buffer size to shuffle the dataset
 BUFFER_SIZE = 10000
@@ -127,7 +128,7 @@ vocab_size = len(vocab)
 embedding_dim = 256
 
 # Number of RNN units
-rnn_units = 1024
+rnn_units = 700
 
 #instantiate a model with the architecture defined
 model = build_model(
