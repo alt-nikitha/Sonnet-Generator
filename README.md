@@ -119,6 +119,9 @@ Click on the url that appears to see the app that's running.
 The deployed App URL for image captioning and sonnet generation:  
 http://763470018e6b.ngrok.io
 
+Second Link: http://85604abaf200.ngrok.io/
+Can try any!
+
 ### Heroku
 (Only for Phase I-Sonnet Generation through text)
 This has to be done on your local terminal. <br>
