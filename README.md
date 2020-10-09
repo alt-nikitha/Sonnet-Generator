@@ -116,7 +116,8 @@ Finally, run app.py
 
 Click on the url that appears to see the app that's running.
 
-The deployed App URL for image captioning and sonnet generation: http://f80d581d8aa5.ngrok.io/
+The deployed App URL for image captioning and sonnet generation:  
+http://763470018e6b.ngrok.io
 
 ### Heroku
 (Only for Phase I-Sonnet Generation through text)
