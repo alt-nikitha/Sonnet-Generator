@@ -124,6 +124,7 @@ http://ff87a1a7d094.ngrok.io
 
 Second Link: http://85604abaf200.ngrok.io/
 Can try any!
+## Note: Ensure one person tries at a time!
 
 ### Heroku
 (Only for Phase I-Sonnet Generation through text)
