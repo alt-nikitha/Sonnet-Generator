@@ -3,6 +3,9 @@
 The sonnet is a type of poem that has been a part of the literary repertoire since the thirteenth century. 
 Sonnets can communicate a sundry of details contained within a single thought, mood, or feeling, typically culminating in the last lines. 
 
+## IMP NOTE:- For the 1st Phase, i.e., text->sonnet -> Use the Heroku link; For Image ->sonnet use any of the ngrok links
+
+
 ## Model 
 Image Captioning:
 The captioning model is a combination of two separate architecture that is CNN (Convolutional Neural Networks)& RNN (Recurrent Neural Networks) and in this case LSTM (Long Short Term Memory), which is a special kind of RNN that includes a memory cell, in order to maintain the information for a longer period of time. 
