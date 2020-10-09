@@ -63,14 +63,6 @@ def caps(img_path):
   xception_model = Xception(include_top=False, pooling="avg")
 
   photo = extract_features(img_path, xception_model)
-<<<<<<< HEAD
-  
-
-  description = generate_desc(model, tokenizer, photo, max_length)
-  splitline=description.split(" ")
-  fdescription=" ".join(splitline[6:])
-  return fdescription[:-3]
-=======
   # img = Image.open(img_path)
 
   description = generate_desc(model, tokenizer, photo, max_length)
@@ -78,6 +70,5 @@ def caps(img_path):
   # print(description)
   # plt.imshow(img)
   return description[5:-3]
->>>>>>> 898573c07de61de605f60226f606235c67a827dc
 
 
