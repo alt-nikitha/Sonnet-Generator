@@ -164,7 +164,7 @@ https://www.tensorflow.org/tutorials/text/text_generation
 
 http://karpathy.github.io/2015/05/21/rnn-effectiveness/
 
-
+Note: We haven't included the Video and Presentation on GitHub due to size contraints.
 
 
 
