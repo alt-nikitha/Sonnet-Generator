@@ -122,7 +122,7 @@ Click on the url that appears to see the app that's running.
 The deployed App URL for image captioning and sonnet generation:  
 http://2309a8e18bd5.ngrok.io
 
-Second Link: http://85604abaf200.ngrok.io/
+Second Link:http://64203d844ee8.ngrok.io/
 Can try any!
 ### Note: Ensure one person tries at a time!
 
