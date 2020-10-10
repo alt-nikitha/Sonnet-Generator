@@ -120,7 +120,7 @@ Finally, run app.py
 Click on the url that appears to see the app that's running.
 
 The deployed App URL for image captioning and sonnet generation:  
-http://2309a8e18bd5.ngrok.io
+http://be9982279073.ngrok.io
 
 Second Link:http://64203d844ee8.ngrok.io/
 Can try any!
